@@ -37,9 +37,11 @@ export const Navigation = () => {
               <ShoppingBag className="w-4 h-4 mr-2" />
               Cart
             </Button>
-            <Button variant="outline" size="sm" className="btn-secondary-campus text-sm">
-              <Upload className="w-4 h-4 mr-2" />
-              UPLOAD
+            <Button variant="outline" size="sm" className="btn-secondary-campus text-sm" asChild>
+              <Link to="/upload">
+                <Upload className="w-4 h-4 mr-2" />
+                UPLOAD
+              </Link>
             </Button>
             <Link to="/auth">
               <Button variant="ghost" size="sm">
