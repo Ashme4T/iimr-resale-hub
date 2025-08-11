@@ -1,42 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* IIM Rohtak Marketplace Design System 
+All colors MUST be HSL for consistency.
 */
 
 @layer base {
   :root {
+    /* IIM Rohtak Brand Colors */
+    --primary: 207 90% 54%; /* Light Blue #2196F3 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 207 90% 70%;
+    
+    --secondary: 45 100% 51%; /* Yellow #FFC107 */
+    --secondary-foreground: 0 0% 13%;
+    
+    /* Campus Theme Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 0 0% 13%; /* Dark Gray #212121 */
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 13%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --popover-foreground: 0 0% 13%;
+    
+    /* Neutral Grays for different sections */
+    --muted: 0 0% 96%; /* Light Gray #FAFAFA for homepage */
+    --muted-foreground: 0 0% 45%;
+    
+    --accent: 0 0% 96%; /* Neutral Gray #F5F5F5 for cart/support/about */
+    --accent-foreground: 0 0% 13%;
+    
+    /* Interactive Elements */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 207 90% 54%;
+    
+    /* Design System Extensions */
     --radius: 0.5rem;
+    
+    /* Campus Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(207 90% 54%), hsl(45 100% 51%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 98%));
+    
+    /* Donation Theme */
+    --donation: 350 100% 88%; /* Soft pink for donation hearts */
+    --donation-foreground: 350 100% 30%;
+    
+    /* Shadows with brand colors */
+    --shadow-elegant: 0 10px 30px -10px hsl(207 90% 54% / 0.2);
+    --shadow-glow: 0 0 40px hsl(207 90% 70% / 0.3);
+    
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +124,50 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Inter',sans-serif];
+  }
+}
+
+@layer components {
+  /* Campus-specific component styles */
+  .hero-section {
+    background: var(--gradient-hero);
+    transition: var(--transition-smooth);
+  }
+  
+  .donation-highlight {
+    @apply italic text-donation-foreground;
+  }
+  
+  .campus-card {
+    @apply bg-card rounded-lg shadow-lg hover:shadow-xl;
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-smooth);
+  }
+  
+  .campus-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-campus {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium;
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .btn-campus:hover {
+    @apply bg-primary-glow;
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary-campus {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium;
+    transition: var(--transition-bounce);
+  }
+  
+  .btn-secondary-campus:hover {
+    @apply bg-secondary/90;
+    transform: translateY(-1px);
   }
 }
